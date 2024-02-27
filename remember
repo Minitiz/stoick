@@ -1,0 +1,13 @@
+ CREATE TABLE IF NOT EXISTS urlshortened (
+            id SERIAL PRIMARY KEY,
+            url TEXT NOT NULL,
+            short TEXT NOT NULL,
+            access INT NOT NULL DEFAULT 0,
+            expiry INT NOT NULL DEFAULT 0
+        )
+
+SELECT url, short, access, expiry FROM urlshortened
+
+curl -XPOST localhost:8080/generate -d '{"url":"https://www.google.com"}'
+
+curl localhost:8080/short
